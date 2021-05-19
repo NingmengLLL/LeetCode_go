@@ -5,7 +5,7 @@ func countNicePairs(nums []int) int {
 	ans:=0
 	mod:=1000000007
 	for _,num:=range nums{
-		k:=num-rec(num)
+		k:=num- rec(num)
 		ans=(ans+m[k])%mod
 		m[k]++
 	}
