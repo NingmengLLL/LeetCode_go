@@ -2,13 +2,21 @@ package main
 
 import (
 	"fmt"
-	"unsafe"
+	"time"
 )
 
 func main() {
-	var a int = 89
-	b := 95
-	fmt.Println("value of a is", a, "and b is", b)
-	fmt.Printf("type of a is %T, size of a is %d", a, unsafe.Sizeof(a)) // a 的类型和大小
-	fmt.Printf("\ntype of b is %T, size of b is %d", b, unsafe.Sizeof(b)) // b 的类型和大小
+
+	format := "2006-01-02 15:04:05"
+	timeLeft, _ := time.ParseInLocation(format, "2021-06-03 00:00:00", time.Local)
+	timeRight, _ := time.ParseInLocation(format, "2021-06-05 23:59:59", time.Local)
+
+	curTime := time.Now()
+
+	leftDiff := curTime.Sub(timeLeft)
+	rightDiff := curTime.Sub(timeRight)
+	if leftDiff > 0 && rightDiff < 0 {
+		fmt.Println("!!!!")
+	}
+
 }
